@@ -12,6 +12,9 @@ export default function App(){
 
      const [products, setProducts] = useState([]);
 
+     
+
+
      useEffect(() => {
        async function getFireBase() {
          const response = await fetch('https://slutproject-produkt-advjs-default-rtdb.europe-west1.firebasedatabase.app/products.json');
@@ -20,7 +23,16 @@ export default function App(){
        }
        getFireBase();
      }, []);
+
+
+
+     function updateStock(product){
+        if(product.stock != 0){
+            product.stock -= 1;
+            }
+     }
  
+     console.log(products)
     
     return (
         <div className='App'>  
@@ -31,11 +43,11 @@ export default function App(){
           <h2>Products</h2>
         <div className="row">
             {products.map((product,index) => (
-         <Product key={index} product={product} setCartItems={setCartItems} cartItems={cartItems}></Product>
+         <Product key={index} product={product} setCartItems={setCartItems} cartItems={cartItems} updateStock={updateStock}></Product>
          ))}
            </div>
            </main>
-            <Cart cartItems={cartItems} totalPrice={totalPrice} setTotalPrice={setTotalPrice} />
+            {/* <Cart cartItems={cartItems} totalPrice={totalPrice} setTotalPrice={setTotalPrice} /> */}
 
        
         {/* // <Product key={index} img ={product.img} name={product.name} price={product.price} stock={product.stock } setCartItems={setCartItems}></Product> */}

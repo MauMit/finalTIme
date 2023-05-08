@@ -3,39 +3,33 @@ import Cart from './Cart';
 
 
 
-export default function Product(props) {
-  // export default function Product({img, name, price, stock, setCartItems}) {
+ export default function Product({product, cartItems, setCartItems, updateStock}) {
   
-  const { product, cartItems ,setCartItems } = props;
-  
-
+  console.log(product.stock)
   async function addToCart(){
 
-    // if(product.stock != 0){
-    // product.stock -= 1;
-    // }
 
-    // console.log(product)
-    // console.log('---------')
+ 
+    console.log(product.stock)
 
    
     //   setCartItems(prevCartItems => [...prevCartItems, product]);
 
-    const productInCart = cartItems.find(item => item.id === product.id);
+   // const productInCart = cartItems.find(item => item.id === product.id);
 
     // if ( !productInCart) {
     //   product.stock--;
     //   setCartItems(prevCartItems => [...prevCartItems, product]);
     // }
 
-    if (!productInCart && product.stock != 0) {
-      const updatedProduct = { ...product, stock: product.stock - 1 };
-      setCartItems(prevCartItems => [...prevCartItems, updatedProduct]);
-    }
+    // if (!productInCart && product.stock != 0) {
+    //   const updatedProduct = { ...product, stock: product.stock - 1 };
+    //   setCartItems(prevCartItems => [...prevCartItems, updatedProduct]);
+    // }
 
-     if(product.stock != 0){
-    product.stock -= 1;
-    }
+    //  if(product.stock != 0){
+    // product.stock -= 1;
+    // }
   
   
 
@@ -56,7 +50,8 @@ export default function Product(props) {
       <div>{product.price} kr</div>
       <h5>In stock: {product.stock}</h5>
       <div>
-        <button onClick={addToCart}>Add To Cart</button>
+        {/* <button onClick={addToCart} >Add To Cart</button> */}
+        <button onClick={() => { addToCart(); updateStock(product);} }>Add To Cart</button>
         
       </div>
     </div>
