@@ -30,6 +30,7 @@ export default function App(){
         if(product.stock != 0){
             product.stock -= 1;
             }
+        
      }
  
      console.log(products)
